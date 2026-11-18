@@ -1,0 +1,18 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Self-tests
+        run: bash tests/run-all.sh
+      - name: The action, against the fixture bundle
+        uses: ./
+        with:
+          working-directory: tests/fixture

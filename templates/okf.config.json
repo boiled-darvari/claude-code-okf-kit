@@ -1,0 +1,25 @@
+{
+  "template": true,
+  "okfVersion": "0.1",
+  "docRoot": "doc",
+  "skipDirs": [],
+  "reservedFiles": ["index.md", "log.md"],
+  "conventionsFile": "okf-conventions.md",
+  "bundleTitle": "Project Knowledge Bundle (OKF)",
+  "readmeStub": {
+    "enabled": true,
+    "title": "Project Documentation",
+    "description": "Entry point for the docs bundle; start at index.md."
+  },
+  "refExtensions": ["md", "json", "html"],
+  "assetExcludeExts": [".png", ".jpg", ".jpeg", ".gif", ".svg"],
+  "activeStatus": "active",
+  "onMissingNode": "block",
+  "folders": {
+    "architecture": "Vision, boundaries, decisions.",
+    "guides": "How-to guides and runbooks.",
+    "reference": "External contracts and lookup material.",
+    "archive": "Retired / superseded docs, kept for reference."
+  },
+  "rulesAndInvariants": []
+}

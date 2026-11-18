@@ -1,0 +1,23 @@
+name: OKF gate
+description: Run the Open Knowledge Format docs-bundle gate — frontmatter, links, prose references and index staleness
+branding:
+  icon: book-open
+  color: blue
+inputs:
+  working-directory:
+    description: Directory that holds the manifest (the repository root by default)
+    required: false
+    default: .
+  config:
+    description: Path of the manifest, relative to working-directory
+    required: false
+    default: okf.config.json
+runs:
+  using: composite
+  steps:
+    - name: Run the OKF gate
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      env:
+        OKF_CONFIG: ${{ inputs.config }}
+      run: node "$GITHUB_ACTION_PATH/scripts/okf/check.mjs"

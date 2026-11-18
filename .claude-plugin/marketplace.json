@@ -1,0 +1,5 @@
+{
+  "name": "claude-code-okf-kit",
+  "owner": { "name": "boiled-darvari" },
+  "plugins": [{ "name": "okf", "source": "./" }]
+}

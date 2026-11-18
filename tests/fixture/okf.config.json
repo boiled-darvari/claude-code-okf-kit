@@ -1,0 +1,6 @@
+{
+  "template": false,
+  "docRoot": "doc",
+  "bundleTitle": "Fixture Bundle",
+  "folders": { "guides": "How-to guides." }
+}

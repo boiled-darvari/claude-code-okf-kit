@@ -1,0 +1,9 @@
+{
+  "name": "okf",
+  "version": "0.1.0",
+  "description": "Open Knowledge Format docs bundles for a repository: generated indexes, a conformance gate, a Stop hook that runs it, and a doc-writing agent",
+  "author": { "name": "boiled-darvari" },
+  "repository": "https://github.com/boiled-darvari/claude-code-okf-kit",
+  "license": "Unlicense",
+  "keywords": ["docs", "documentation", "okf", "gate", "markdown"]
+}

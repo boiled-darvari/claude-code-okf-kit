@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# okf — run the OKF docs-bundle gates. Run it from the repository root, where
+# okf.config.json lives (or name the config with OKF_CONFIG=<path>).
+set -u
+
+HERE=$(cd "$(dirname "$0")" 2>/dev/null && pwd -P)
+ROOT=$(dirname "$HERE")
+
+usage() {
+  cat <<'USAGE'
+okf — Open Knowledge Format docs-bundle gates
+
+Usage (from the repository root):
+  okf check                  the full gate: validate, links, refs, index staleness
+  okf build-index            (re)generate index.md files and the README stub
+  okf build-index --check    fail if any generated index is stale
+  okf build-index --adopt    take ownership of pre-existing index/README files
+  okf validate               every concept doc has frontmatter with a `type`
+  okf check-links            relative markdown links inside the bundle resolve
+  okf check-refs             prose mentions of bundle paths point at real files
+  okf check-refs --fix       repoint stale prose mentions at the file's real path
+
+The project's manifest is okf.config.json in the current directory; set
+OKF_CONFIG=<path> to use another file. Requires node >= 18.
+USAGE
+}
+
+cmd=${1:-}
+[ $# -gt 0 ] && shift
+case "$cmd" in
+  check)        script=check.mjs ;;
+  build-index)  script=build-index.mjs ;;
+  validate)     script=validate.mjs ;;
+  check-links)  script=check-links.mjs ;;
+  check-refs)   script=check-refs.mjs ;;
+  -h|--help|help) usage; exit 0 ;;
+  "") usage >&2; exit 2 ;;
+  *) echo "okf: unknown command: $cmd" >&2; usage >&2; exit 2 ;;
+esac
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "okf: node (>= 18) is required to run the gates and was not found on PATH." >&2
+  exit 127
+fi
+exec node "$ROOT/scripts/okf/$script" "$@"

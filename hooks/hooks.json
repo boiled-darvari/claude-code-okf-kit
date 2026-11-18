@@ -1,0 +1,16 @@
+{
+  "description": "Runs the OKF gate before a turn ends, in projects that have an okf.config.json",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}\"/hooks/okf-guard.sh",
+            "timeout": 180
+          }
+        ]
+      }
+    ]
+  }
+}
